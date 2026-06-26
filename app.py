@@ -1,8 +1,8 @@
 import streamlit as st
 
 st.set_page_config(page_title="My Anime Hub", layout="wide")
-st.title("🎬 My Personal Anime Review Hub")
-st.write("Welcome! Here is the collection of my favorite anime series and my personal reviews.")
+st.title("🎬 AniVerse Anime Review Hub")
+st.write("Welcome! Here is the collection of our favorite anime series and our personal reviews.")
 
 
 with st.sidebar:
