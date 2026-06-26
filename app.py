@@ -279,28 +279,6 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-st.header(f"✨ Styled Anime Gallery ({selected_genre})")
-
-for anime in st.session_state.anime_database:
-    if selected_genre == "All Genres" or anime["genre"] == selected_genre:
-        with st.container(border=True):
-            img_col, detail_col = st.columns([1, 3])
-            
-            with img_col:
-                st.image(anime["image"], use_container_width=True)
-                
-            with detail_col:
-                st.markdown(f"<p class='anime-title'>{anime['title']}</p>", unsafe_allow_html=True)
-                st.markdown(f"**Genre:** <span class='genre-badge'>{anime['genre']}</span>", unsafe_allow_html=True)
-                st.write(f"**Rating:** {anime['rating']}")
-                st.write("**My Review:**")
-                st.info(anime["review"])
-
-st.markdown("---")
-st.sidebar.header("🔍 Search Anime Reviews")
-search_query = st.sidebar.text_input("Type Anime Title to Search:", value="")
-
-
 if search_query:
     st.subheader("🔍 Search Results")
     found_any = False
@@ -324,7 +302,7 @@ if search_query:
 
 
 else:
-    st.subheader("🎬 All Anime Reviews")
+    st.subheader("✨ Styled Anime Gallery")
     
     for anime in st.session_state.anime_database:
         with st.container(border=True):
