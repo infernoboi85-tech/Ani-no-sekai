@@ -297,8 +297,8 @@ for anime in st.session_state.anime_database:
                 st.info(anime["review"])
 
 st.markdown("---")
-st.header("🔍 Search Anime Reviews")
-search_query = st.text_input("Type Anime Title to Search:", value="")
+st.sidebar.header("🔍 Search Anime Reviews")
+search_query = st.sidebar.text_input("Type Anime Title to Search:", value="")
 
 if search_query:
     st.subheader("Search Results")
