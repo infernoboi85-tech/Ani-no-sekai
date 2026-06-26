@@ -4,6 +4,16 @@ st.set_page_config(page_title="My Anime Hub", layout="wide")
 st.title("🎬 My Personal Anime Review Hub")
 st.write("Welcome! Here is the collection of my favorite anime series and my personal reviews.")
 
+with st.sidebar:
+    st.markdown("### 📢 AniVerse Channel")
+    st.write("Anime အပိုင်းသစ်တွေကို တိုက်ရိုက်ကြည့်ရှုဖို့ ကျွန်တော်တို့ရဲ့ Telegram Channel ထဲကို အခုပဲ ဝင်ရောက်လိုက်ပါဗျာ!")
+    st.link_button(
+        label="✈️ Join Our Telegram Channel", 
+        url="https://t.me/Ani_no_sekai", 
+        type="primary",
+        use_container_width=True
+    )
+
 if "anime_database" not in st.session_state:
     st.session_state.anime_database = [
         {
