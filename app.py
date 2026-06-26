@@ -280,14 +280,15 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+is_all_genres = "all" in selected_genre.lower()
+
 if search_query:
     st.subheader("🔍 Search Results")
     found_any = False
     
     for anime in st.session_state.anime_database:
         
-        if selected_genre == "All" or anime["genre"] == selected_genre:
-            
+        if is_all_genres or anime["genre"].lower() == selected_genre.lower():
             if search_query.lower() in anime["title"].lower():
                 found_any = True
                 with st.container(border=True):
@@ -304,13 +305,12 @@ if search_query:
     if not found_any:
         st.warning("❌ ရွေးချယ်ထားသော Genre အတွင်း ရှာဖွေနေသော Anime မတွေ့ရှိပါဗျာ။")
 
-
 else:
     st.subheader("✨ Styled Anime Gallery")
     
     for anime in st.session_state.anime_database:
         
-        if selected_genre == "All" or anime["genre"] == selected_genre:
+        if is_all_genres or anime["genre"].lower() == selected_genre.lower():
             with st.container(border=True):
                 img_col, detail_col = st.columns([1, 3])
                 with img_col:
