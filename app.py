@@ -285,27 +285,29 @@ if search_query:
     found_any = False
     
     for anime in st.session_state.anime_database:
-        if search_query.lower() in anime["title"].lower():
-            found_any = True
-            with st.container(border=True):
-                img_col, detail_col = st.columns([1, 3])
-                with img_col:
-                    st.image(anime["image"], use_container_width=True)
-                with detail_col:
-                    st.markdown(f"<p class='anime-title'>{anime['title']}</p>", unsafe_allow_html=True)
-                    st.markdown(f"**Genre:** <span class='genre-badge'>{anime['genre']}</span>", unsafe_allow_html=True)
-                    st.write(f"**Rating:** {anime['rating']}")
-                    st.write("**My Review:**")
-                    st.info(anime["review"])
+        
+        if selected_genre == "All" or anime["genre"] == selected_genre:
+            
+            if search_query.lower() in anime["title"].lower():
+                found_any = True
+                with st.container(border=True):
+                    img_col, detail_col = st.columns([1, 3])
+                    with img_col:
+                        st.image(anime["image"], use_container_width=True)
+                    with detail_col:
+                        st.markdown(f"<p class='anime-title'>{anime['title']}</p>", unsafe_allow_html=True)
+                        st.markdown(f"**Genre:** <span class='genre-badge'>{anime['genre']}</span>", unsafe_allow_html=True)
+                        st.write(f"**Rating:** {anime['rating']}")
+                        st.write("**My Review:**")
+                        st.info(anime["review"])
                     
     if not found_any:
-        st.warning("❌ ရှာဖွေနေသော Anime မတွေ့ရှိပါဗျာ။")
+        st.warning("❌ ရွေးချယ်ထားသော Genre အတွင်း ရှာဖွေနေသော Anime မတွေ့ရှိပါဗျာ။")
+
 
 else:
     st.subheader("✨ Styled Anime Gallery")
     
-    
-
     for anime in st.session_state.anime_database:
         
         if selected_genre == "All" or anime["genre"] == selected_genre:
