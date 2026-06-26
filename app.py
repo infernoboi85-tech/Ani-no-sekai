@@ -4,6 +4,16 @@ st.set_page_config(page_title="My Anime Hub", layout="wide")
 st.title("🎬 My Personal Anime Review Hub")
 st.write("Welcome! Here is the collection of my favorite anime series and my personal reviews.")
 
+conn = st.connection("gsheets", type=st.connection.ExperimentalBaseConnection)
+sheet_data = conn.read(spreadsheet="https://docs.google.com/spreadsheets/d/1BMXL_DOKLjAuxB6PPKgJmNtOOsbsHV_M_-XoDmQwwCM/edit?usp=sharing")
+
+for index, row in sheet_data.iterrows():
+    with st.container(border=True):
+        st.subheader(row["title"])
+        st.image(row["image"], use_container_width=True)
+        st.write(f"📝 **Review:** {row['review']}")
+        st.link_button("🎬 Watch Trailer", row["youtube"], use_container_width=True)
+
 with st.sidebar:
     st.markdown("### 📢 AniVerse Channel")
     st.write("Anime အပိုင်းသစ်တွေကို တိုက်ရိုက်ကြည့်ရှုဖို့ ကျွန်တော်တို့ရဲ့ Telegram Channel ထဲကို အခုပဲ ဝင်ရောက်လိုက်ပါဗျာ!")
