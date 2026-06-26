@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 
 st.set_page_config(page_title="My Anime Hub", layout="wide")
 st.title("🎬 My Personal Anime Review Hub")
