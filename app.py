@@ -226,6 +226,7 @@ if "anime_database" not in st.session_state:
 st.sidebar.header("Filter Settings")
 genres = ["All Genres", "Isekai / Fantasy", "Action / Shonen", "Psychological / Thriller", "Romance / Drama", "Comedy / Slice of Life"]
 selected_genre = st.sidebar.selectbox("Choose a Genre:", genres)
+search_query = st.sidebar.text_input("Search Anime by Title:")
 
 st.sidebar.markdown("---")
 
