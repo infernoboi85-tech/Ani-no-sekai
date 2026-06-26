@@ -1,4 +1,1 @@
 streamlit
-pandas
-streamlit-gsheets
-gspread
