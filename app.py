@@ -300,10 +300,14 @@ st.markdown("---")
 st.sidebar.header("🔍 Search Anime Reviews")
 search_query = st.sidebar.text_input("Type Anime Title to Search:", value="")
 
+
 if search_query:
-    st.subheader("Search Results")
+    st.subheader("🔍 Search Results")
+    found_any = False
+    
     for anime in st.session_state.anime_database:
         if search_query.lower() in anime["title"].lower():
+            found_any = True
             with st.container(border=True):
                 img_col, detail_col = st.columns([1, 3])
                 with img_col:
@@ -314,6 +318,25 @@ if search_query:
                     st.write(f"**Rating:** {anime['rating']}")
                     st.write("**My Review:**")
                     st.info(anime["review"])
+                    
+    if not found_any:
+        st.warning("❌ ရှာဖွေနေသော Anime မတွေ့ရှိပါဗျာ။")
+
+
+else:
+    st.subheader("🎬 All Anime Reviews")
+    
+    for anime in st.session_state.anime_database:
+        with st.container(border=True):
+            img_col, detail_col = st.columns([1, 3])
+            with img_col:
+                st.image(anime["image"], use_container_width=True)
+            with detail_col:
+                st.markdown(f"<p class='anime-title'>{anime['title']}</p>", unsafe_allow_html=True)
+                st.markdown(f"**Genre:** <span class='genre-badge'>{anime['genre']}</span>", unsafe_allow_html=True)
+                st.write(f"**Rating:** {anime['rating']}")
+                st.write("**My Review:**")
+                st.info(anime["review"])
 
 st.markdown("---")
 st.header("📊 My Anime Hub Analytics")
